@@ -1,6 +1,7 @@
 module Task
   (
-  ) where
+  )
+where
 
 -- Implement a function that returns the first element of a list, if there is one.
 -- Hint: `Maybe a` is already defined as so:
@@ -91,7 +92,7 @@ constructTree = undefined
 --     / \   /
 --    4   6 5
 leftmost :: Tree a -> Maybe a
-leftmost  = undefined
+leftmost = undefined
 
 -- Returns the rightmost element of the given tree.
 --
@@ -107,7 +108,7 @@ leftmost  = undefined
 --     / \   /
 --    4   6 5
 rightmost :: Tree a -> Maybe a
-rightmost  = undefined
+rightmost = undefined
 
 -- Returns the sum of all elements in the tree
 -- For this tree the result should be 6:
