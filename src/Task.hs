@@ -1,7 +1,19 @@
 module Task
-  (
+  ( safeHead,
+    safeLast,
+    withoutLast,
+    indexed,
+    alternating,
+    constructTree,
+    leftmost,
+    rightmost,
+    treeSum,
+    insert,
+    insertAll,
   )
 where
+
+import Numeric.Natural
 
 -- Implement a function that returns the first element of a list, if there is one.
 -- Hint: `Maybe a` is already defined as so:
@@ -37,6 +49,17 @@ safeLast = undefined
 -- []
 withoutLast :: [a] -> [a]
 withoutLast = undefined
+
+-- Returns the element at a given index if there is one.
+-- Otherwise, return Nothing.
+--
+-- >>> indexed 2 [7, 6, 5, 4]
+-- Just 5
+--
+-- >>> indexed 8 [6, 5, 4]
+-- Nothing
+indexed :: Natural -> [a] -> Maybe a
+indexed = undefined
 
 -- Is an infinite list, alternating the sign of every other element.
 --
@@ -111,6 +134,7 @@ rightmost :: Tree a -> Maybe a
 rightmost = undefined
 
 -- Returns the sum of all elements in the tree
+--
 -- For this tree the result should be 6:
 --    1
 --   / \
@@ -122,6 +146,77 @@ rightmost = undefined
 --      2     3
 --     / \   /
 --    4   6 5
-
 treeSum :: Tree Integer -> Integer
 treeSum = undefined
+
+-- Insert the given integer into the tree, maintaining this property:
+--   For every node in the tree all elements in the left subtree should be
+--   smaller than the node element and all elements in the right subtree
+--   should be greater or equal to the node element.
+--
+--    a      forall e in b. e < a
+--   / \
+--  b   c    forall e in c. a >= e
+--
+-- Assume that the input tree already satisfies the property.
+--
+-- So given the number 5 as input and this tree:
+--    2
+--   / \
+--  1   3
+-- the function should produce this tree:
+--    2
+--   / \
+--  1   3
+--       \
+--        5
+--
+-- And given this the number 2 as input and this tree:
+--          7
+--        /   \
+--      2       9
+--     / \     /
+--    1   5   8
+-- the function should produce this tree:
+--          7
+--        /   \
+--      2       9
+--     / \     /
+--    1   2   8
+--         \
+--          5
+insert :: Integer -> Tree Integer -> Tree Integer
+insert = undefined
+
+-- Insert all integers from the list into the given tree using the insert
+-- function defined above.
+--
+-- >>> insertAll [1, 2, 3]
+-- 1
+--  \
+--   2
+--    \
+--     3
+--
+-- >>> insertAll [2, 3, 1]
+--    2
+--   / \
+--  1   3
+--
+-- >>> insertAll [3, 2, 1]
+--     3
+--    /
+--   2
+--  /
+-- 1
+--
+-- >>> insertAll [8, 8, 10, 8]
+-- 8
+--  \
+--   8
+--    \
+--     8
+--      \
+--       10
+insertAll :: [Integer] -> Tree Integer -> Tree Integer
+insertAll = undefined
