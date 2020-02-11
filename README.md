@@ -2,6 +2,14 @@
 
 **NOTE: If you just fork this repository it will not be graded. Ask your supervisor for a special GitHub classroom url.**
 
+## How to do the task
+
+Your task is to write a valid definition for every function declared in `src/Task.hs`. All functions have a comment describing what the function needs to do with some examples.
+
+There are predefined tests for you to check your answer. You can look at the tests for some more usage examples in `test/Tests.hs`.
+
+After defining all functions you then need to commit **and push** your code to your repository. An automated script will then check your solution and give you feedback as a CI result in your github repository.
+
 ## Prerequesites
 
 Firs of all you need to install [haskell stack](https://docs.haskellstack.org/en/stable/README/). To do that you can follow the [installation instructions on the website](https://docs.haskellstack.org/en/stable/README/#how-to-install).
@@ -17,6 +25,8 @@ The easiest way to develop is to use the [IntelliJ plugin for Haskell](https://g
 To install and use it you can follow [the instructions given in the project readme](https://github.com/rikvdkleij/intellij-haskell#getting-started).
 
 **NOTE: You need to choose "Project from Existing Sources..." in IntelliJ**
+
+When you first open a project, IntelliJ will download and build all required tools to give you feedback about your project. (This may take a while, but is only required once)
 
 ## Build and test
 
