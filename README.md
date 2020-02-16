@@ -24,6 +24,8 @@ The easiest way to develop is to use the [IntelliJ plugin for Haskell](https://g
 
 To install and use it you can follow [the instructions given in the project readme](https://github.com/rikvdkleij/intellij-haskell#getting-started).
 
+**NOTE: You need to make sure the project builds before importing**
+
 **NOTE: You need to choose "Project from Existing Sources..." in IntelliJ**
 
 When you first open a project, IntelliJ will download and build all required tools to give you feedback about your project. (This may take a while, but is only required once)
@@ -41,3 +43,14 @@ To run tests on your code you can write `stack test`.
 **NOTE: you don't have to write `stack build` if you want to test your project. Running `stack test` will automatically build any necessary modules.**
 
 You can experiment with your functions by running `stack ghci`. This will build your library and launch an interactive shell with all of the functions already loaded. You can then just call your functions directly.
+
+### Lifehack
+
+If you try ti display yyour types in the console, you fill get errors.
+
+To get rid of the errors you have to add `deriving Show` to the definition like so:
+
+```haskell
+data Foo = Bar
+  deriving Show
+```
