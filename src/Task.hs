@@ -1,5 +1,6 @@
 module Task
-  ( safeHead,
+  ( regroup,
+    safeHead,
     safeLast,
     withoutLast,
     indexed,
@@ -14,6 +15,13 @@ module Task
 where
 
 import Numeric.Natural
+
+-- Implement a function which regroups a nested tuple as the types would sudgest.
+--
+-- >>> regroup (8, ("Hello", True))
+-- ("Hello", 8, True)
+regroup :: (a, (b, c)) -> (b, a, c)
+regroup = undefined
 
 -- Implement a function that returns the first element of a list, if there is one.
 -- Hint: `Maybe a` is already defined as so:
