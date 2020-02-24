@@ -16,7 +16,7 @@ where
 
 import Numeric.Natural
 
--- Implement a function which regroups a nested tuple as the types would sudgest.
+-- Implement a function which regroups a nested tuple as the types would suggest.
 --
 -- >>> regroup (8, ("Hello", True))
 -- ("Hello", 8, True)
@@ -53,7 +53,7 @@ safeLast = undefined
 -- >>> withoutLast [1, 2, 3, 4]
 -- [1, 2, 3]
 --
--- >>> wihtoutLast []
+-- >>> withoutLast []
 -- []
 withoutLast :: [a] -> [a]
 withoutLast = undefined
@@ -79,7 +79,7 @@ alternating = undefined
 -- Define a binary tree structure.
 --
 -- Hint: a tree is either the end of the tree (a node with no elements)
---   or a node containg an element, with two branches comming off of it.
+--   or a node contains an element, with two branches coming off of it.
 data Tree a -- complete the implementation
 
 -- Constructs a tree from the given elements.
