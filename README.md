@@ -1,6 +1,6 @@
 # Task 1
 
-**NOTE: If you just fork this repository it will not be graded. Ask your supervisor for a special GitHub classroom url.**
+**NOTE: If you just fork this repository it will not be graded. Ask your supervisor for a special GitHub classroom URL.**
 
 ## How to do the task
 
@@ -8,31 +8,41 @@ Your task is to write a valid definition for every function declared in `src/Tas
 
 There are predefined tests for you to check your answer. You can look at the tests for some more usage examples in `test/Tests.hs`.
 
-After defining all functions you then need to commit **and push** your code to your repository. An automated script will then check your solution and give you feedback as a CI result in your github repository.
+After defining all functions you then need to commit **and push** your code to your repository. An automated script will then check your solution and give you feedback as a CI result in your GitHub repository.
 
-## Prerequesites
+## Prerequisites
 
-Firs of all you need to install [haskell stack](https://docs.haskellstack.org/en/stable/README/). To do that you can follow the [installation instructions on the website](https://docs.haskellstack.org/en/stable/README/#how-to-install).
+First of all, you need to install [haskell stack](https://docs.haskellstack.org/en/stable/README/). To do that you can follow the [installation instructions on the website](https://docs.haskellstack.org/en/stable/README/#how-to-install).
 
-Stack will manage installing the compiler and all required libraries when you try to compile a haskell stack project. (The first time it might take a while, but when you will try to run it again, it will used the already installed tools).
+Stack will manage to install the compiler and all required libraries when you try to compile a Haskell stack project. (The first time it might take a while, but when you will try to run it again, it will use the already installed tools).
 
-Stack is also a sort of meta build system. It is "meta" because stack doesn't actually build anything -- it tells *cabal* how to build your project with the installed compiler and libraries. *Cabal* is to Haskell what the *CMake* is to C++.
+Stack is also a sort of meta build system. It is "meta" because stack doesn't build anything -- it tells *cabal* how to build your project with the installed compiler and libraries. *Cabal* is to Haskell what the *CMake* is to C++.
 
 ## IDE
 
 The easiest way to develop is to use the [IntelliJ plugin for Haskell](https://github.com/rikvdkleij/intellij-haskell).
 
+
+Unfortunately, the latest versions of the plugin are not available in the IntelliJ marketplace, so it is recommended that you download it from [the "Releases" tab on github](https://github.com/rikvdkleij/intellij-haskell/releases):
+
+![](img/1.png)
+
+You then need to install it from disk:
+
+![](img/2.png)
+
 To install and use it you can follow [the instructions given in the project readme](https://github.com/rikvdkleij/intellij-haskell#getting-started).
+
 
 **NOTE: You need to make sure the project builds before importing**
 
 **NOTE: You need to choose "Project from Existing Sources..." in IntelliJ**
 
-When you first open a project, IntelliJ will download and build all required tools to give you feedback about your project. (This may take a while, but is only required once)
+When you first open a project, IntelliJ will download and build all the required tools to give you feedback about your project. (This may take a while, but is only required once)
 
 ## Build and test
 
-Unfortuantely, *IntelliJ plugin for Haskell* doesn't currently support building your project directly from the IDE, so you will have to build your project and run tests from the terminal.
+Unfortunately, *IntelliJ plugin for Haskell* doesn't currently support building your project directly from the IDE, so you will have to build your project and run tests from the terminal.
 
 All subsequent commands are assumed to be run when the current directory is the root of your project.
 
@@ -46,7 +56,7 @@ You can experiment with your functions by running `stack ghci`. This will build 
 
 ### Lifehack
 
-If you try ti display yyour types in the console, you fill get errors.
+If you try to display your types in the console, you will get errors.
 
 To get rid of the errors you have to add `deriving Show` to the definition like so:
 
