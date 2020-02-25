@@ -37,15 +37,15 @@ tests = do
     alternating !! 69 `shouldBe` -70
     alternating !! 420 `shouldBe` 421
   it "leftmost" $ do
-    (leftmost . constructTree) [1, 2, 3, 4, 5] `shouldBe` 4
-    (leftmost . constructTree) [1, 2, 3, 4] `shouldBe` 4
-    (leftmost . constructTree) [1, 2, 3, 99, 5] `shouldBe` 99
-    (leftmost . constructTree) [8, 7, 6, 5, 4, 1, 2, 3, 4, 5] `shouldBe` 3
+    (leftmost . constructTree) [1, 2, 3, 4, 5] `shouldBe` Just 4
+    (leftmost . constructTree) [1, 2, 3, 4] `shouldBe` Just 4
+    (leftmost . constructTree) [1, 2, 3, 99, 5] `shouldBe` Just 99
+    (leftmost . constructTree) [8, 7, 6, 5, 4, 1, 2, 3, 4, 5] `shouldBe` Just 3
   it "rightmost" $ do
-    (rightmost . constructTree) [1, 2, 3, 4, 5] `shouldBe` 5
-    (rightmost . constructTree) [1, 2, 3, 4] `shouldBe` 3
-    (rightmost . constructTree) [1, 2, 3, 5, 99] `shouldBe` 99
-    (rightmost . constructTree) [8, 7, 6, 5, 4, 1, 2, 3, 4, 5] `shouldBe` 2
+    (rightmost . constructTree) [1, 2, 3, 4, 5] `shouldBe` Just 5
+    (rightmost . constructTree) [1, 2, 3, 4] `shouldBe` Just 3
+    (rightmost . constructTree) [1, 2, 3, 5, 99] `shouldBe` Just 99
+    (rightmost . constructTree) [8, 7, 6, 5, 4, 1, 2, 3, 4, 5] `shouldBe` Just 2
   it "treeSum" $ do
     (treeSum . constructTree) [1, 2, 3, 4, 5] `shouldBe` sum [1, 2, 3, 4, 5]
     (treeSum . constructTree) [1, 2, 3, 4] `shouldBe` sum [1, 2, 3, 4]
@@ -54,18 +54,22 @@ tests = do
     (treeSum . constructTree . take 100) [5 ..] `shouldBe` (sum . take 100) [5 ..]
     (treeSum . constructTree . take 100) [2 ..] `shouldBe` (sum . take 100) [2 ..]
   it "insert" $ do
-    (insert 3 . insert 1 . insert 2) constructTree [] `shouldBe` constructTree [2, 1, 3]
-    (insert 71 . insert 65 . insert 56 . insert 54 . insert 45 . insert 35 . insert 15 . insert 5) constructTree [50, 30, 60, 10, 55, 40, 70]
+    constructTree [1] `shouldNotBe` constructTree [1, 2]
+    constructTree [1] `shouldNotBe` constructTree []
+    (insert 3 . insert 1 . insert 2 . constructTree) [] `shouldBe` constructTree [2, 1, 3]
+    (insert 71 . insert 65 . insert 56 . insert 54 . insert 45 . insert 35 . insert 15 . insert 5 . constructTree) [50, 30, 60, 10, 55, 40, 70]
       `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
-    (insert 71 . insert 54 . insert 45 . insert 35 . insert 15 . insert 65 . insert 56 . insert 5) constructTree [50, 30, 60, 10, 55, 40, 70]
+    (insert 71 . insert 54 . insert 45 . insert 35 . insert 15 . insert 65 . insert 56 . insert 5 . constructTree) [50, 30, 60, 10, 55, 40, 70]
       `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
-    (insert 35 . insert 15 . insert 65 . insert 71 . insert 54 . insert 45 . insert 56 . insert 5) constructTree [50, 30, 60, 10, 55, 40, 70]
+    (insert 35 . insert 15 . insert 65 . insert 71 . insert 54 . insert 45 . insert 56 . insert 5 . constructTree) [50, 30, 60, 10, 55, 40, 70]
       `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
-    (insert 35 . insert 54 . insert 45 . insert 56 . insert 5 . insert 15 . insert 65 . insert 71) constructTree [50, 30, 60, 10, 55, 40, 70]
+    (insert 35 . insert 54 . insert 45 . insert 56 . insert 5 . insert 15 . insert 65 . insert 71 . constructTree) [50, 30, 60, 10, 55, 40, 70]
       `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
-    (insert 56 . insert 5 . insert 15 . insert 65 . insert 35 . insert 54 . insert 45 . insert 71) constructTree [50, 30, 60, 10, 55, 40, 70]
+    (insert 56 . insert 5 . insert 15 . insert 65 . insert 35 . insert 54 . insert 45 . insert 71 . constructTree) [50, 30, 60, 10, 55, 40, 70]
       `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
   it "insertAll" $ do
+    constructTree [1] `shouldNotBe` constructTree [1, 2]
+    constructTree [1] `shouldNotBe` constructTree []
     (insertAll [3, 1, 2] . constructTree) [] `shouldBe` constructTree [2, 1, 3]
     (insertAll [71, 65, 56, 54, 45, 35, 15, 5] . constructTree) [50, 30, 60, 10, 55, 40, 70]
       `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]

@@ -84,6 +84,7 @@ alternating = undefined
 -- Hint: a tree is either the end of the tree (a node with no elements)
 --   or a node contains an element, with two branches coming off of it.
 data Tree a -- complete the implementation
+  deriving (Show, Eq)
 
 -- Constructs a tree from the given elements.
 -- The first element is the root of the tree and the rest of the elements

@@ -4,7 +4,7 @@ cabal-version: 2.2
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: c454617de75af64ca6c743a3a745918472bb438f8df9c2019b67700d4caaf63c
+-- hash: 198dcd00ebced8fb812286640989f7a4320805e8eef80d769753e98ace428bd6
 
 name:           task
 version:        0.1.0.0
@@ -19,6 +19,7 @@ library
       Paths_task
   hs-source-dirs:
       src
+  default-extensions: EmptyDataDeriving
   build-depends:
       base >=4.7 && <5
   default-language: Haskell2010
@@ -31,6 +32,7 @@ test-suite task-tests
       Paths_task
   hs-source-dirs:
       test
+  default-extensions: EmptyDataDeriving
   build-depends:
       base >=4.7 && <5
     , task

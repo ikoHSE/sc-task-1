@@ -5,6 +5,9 @@ license:             Unlicense
 dependencies:
   - base >= 4.7 && < 5
 
+default-extensions:
+  - EmptyDataDeriving
+
 library:
   source-dirs:      src
 
