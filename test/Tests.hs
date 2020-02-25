@@ -77,3 +77,17 @@ tests = do
       `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
     (insertAll [56, 5, 15, 65, 35, 54, 45, 71] . constructTree) [50, 30, 60, 10, 55, 40, 70]
       `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
+  it "quote" $ do
+    quote "hello" `shouldBe` "\"hello\""
+    quote "bar" `shouldBe` "\"bar\""
+    quote "he said \"oh no\"" `shouldBe` "\"he said \"oh no\"\""
+  it "escape" $ do
+    escape "hello" `shouldBe` "hello"
+    escape "bar" `shouldBe` "bar"
+    escape "b\"a\"r" `shouldBe` "b\\\"a\\\"r"
+    escape "he said \"oh no\"" `shouldBe` "he said \\\"oh no\\\""
+  it "escapeAndQuote" $ do
+    escapeAndQuote "hello" `shouldBe` "\"hello\""
+    escapeAndQuote "bar" `shouldBe` "\"bar\""
+    escapeAndQuote "b\"a\"r" `shouldBe` "\"b\\\"a\\\"r\""
+    escapeAndQuote "he said \"oh no\"" `shouldBe` "\"he said \\\"oh no\\\"\""
