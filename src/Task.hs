@@ -11,9 +11,6 @@ module Task
     treeSum,
     insert,
     insertAll,
-    quote,
-    escape,
-    escapeAndQuote,
   )
 where
 
@@ -232,36 +229,3 @@ insert = undefined
 --       10
 insertAll :: [Integer] -> Tree Integer -> Tree Integer
 insertAll = undefined
-
--- Wraps the given string in double quotes ("").
---
--- >>> quote "hello"
--- "\"hello\""
---
--- When printed in console with putStrLn:
---   "hello"
-quote :: String -> String
-quote = undefined
-
--- Replaces occurrences of " with \" (escape sequence)
---
--- Note: the \ character is escaped as \\ (in source code)
---
--- >>> escape "he said \"hello\""
--- "he said \\\"hello\\\""
---
--- When printed in console with putStrLn:
---   he said \"hello\"
-escape :: String -> String
-escape = undefined
-
--- Replaces occurrences of " with \" (escape sequence) and wraps the string in
--- double quotes ("").
---
--- >>> escape "he said \"hello\""
--- "\"he said \\\"hello\\\"\"""
---
--- When printed in console with putStrLn:
---   "he said \"hello\""
-escapeAndQuote :: String -> String
-escapeAndQuote = undefined

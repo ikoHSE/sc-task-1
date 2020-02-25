@@ -42,9 +42,9 @@ tests = do
     (leftmost . constructTree) [1 :: Int, 2, 3, 99, 5] `shouldBe` Just 99
     (leftmost . constructTree) [8 :: Int, 7, 6, 5, 4, 1, 2, 3, 4, 5] `shouldBe` Just 3
   it "rightmost" $ do
-    (rightmost . constructTree) [1 :: Int, 2, 3, 4, 5] `shouldBe` Just 5
+    (rightmost . constructTree) [1 :: Int, 2, 3, 4, 5] `shouldBe` Just 3
     (rightmost . constructTree) [1 :: Int, 2, 3, 4] `shouldBe` Just 3
-    (rightmost . constructTree) [1 :: Int, 2, 3, 5, 99] `shouldBe` Just 99
+    (rightmost . constructTree) [1 :: Int, 2, 99, 5, 5] `shouldBe` Just 99
     (rightmost . constructTree) [8 :: Int, 7, 6, 5, 4, 1, 2, 3, 4, 5] `shouldBe` Just 2
   it "treeSum" $ do
     (treeSum . constructTree) [1, 2, 3, 4, 5] `shouldBe` sum [1, 2, 3, 4, 5]
@@ -58,40 +58,26 @@ tests = do
     constructTree [1 :: Int] `shouldNotBe` constructTree []
     (insert 3 . insert 1 . insert 2 . constructTree) [] `shouldBe` constructTree [2, 1, 3]
     (insert 71 . insert 65 . insert 56 . insert 54 . insert 45 . insert 35 . insert 15 . insert 5 . constructTree) [50, 30, 60, 10, 55, 40, 70]
-      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
+      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
     (insert 71 . insert 54 . insert 45 . insert 35 . insert 15 . insert 65 . insert 56 . insert 5 . constructTree) [50, 30, 60, 10, 55, 40, 70]
-      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
+      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
     (insert 35 . insert 15 . insert 65 . insert 71 . insert 54 . insert 45 . insert 56 . insert 5 . constructTree) [50, 30, 60, 10, 55, 40, 70]
-      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
+      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
     (insert 35 . insert 54 . insert 45 . insert 56 . insert 5 . insert 15 . insert 65 . insert 71 . constructTree) [50, 30, 60, 10, 55, 40, 70]
-      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
+      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
     (insert 56 . insert 5 . insert 15 . insert 65 . insert 35 . insert 54 . insert 45 . insert 71 . constructTree) [50, 30, 60, 10, 55, 40, 70]
-      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
+      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
   it "insertAll" $ do
     constructTree [1 :: Int] `shouldNotBe` constructTree [1, 2]
     constructTree [1 :: Int] `shouldNotBe` constructTree []
     (insertAll [3, 1, 2] . constructTree) [] `shouldBe` constructTree [2, 1, 3]
     (insertAll [71, 65, 56, 54, 45, 35, 15, 5] . constructTree) [50, 30, 60, 10, 55, 40, 70]
-      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
+      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
     (insertAll [71, 54, 45, 35, 15, 65, 56, 5] . constructTree) [50, 30, 60, 10, 55, 40, 70]
-      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
+      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
     (insertAll [35, 15, 65, 71, 54, 45, 56, 5] . constructTree) [50, 30, 60, 10, 55, 40, 70]
-      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
+      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
     (insertAll [35, 54, 45, 56, 5, 15, 65, 71] . constructTree) [50, 30, 60, 10, 55, 40, 70]
-      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
+      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
     (insertAll [56, 5, 15, 65, 35, 54, 45, 71] . constructTree) [50, 30, 60, 10, 55, 40, 70]
-      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 15, 56, 35, 65, 45, 71]
-  it "quote" $ do
-    quote "hello" `shouldBe` "\"hello\""
-    quote "bar" `shouldBe` "\"bar\""
-    quote "he said \"oh no\"" `shouldBe` "\"he said \"oh no\"\""
-  it "escape" $ do
-    escape "hello" `shouldBe` "hello"
-    escape "bar" `shouldBe` "bar"
-    escape "b\"a\"r" `shouldBe` "b\\\"a\\\"r"
-    escape "he said \"oh no\"" `shouldBe` "he said \\\"oh no\\\""
-  it "escapeAndQuote" $ do
-    escapeAndQuote "hello" `shouldBe` "\"hello\""
-    escapeAndQuote "bar" `shouldBe` "\"bar\""
-    escapeAndQuote "b\"a\"r" `shouldBe` "\"b\\\"a\\\"r\""
-    escapeAndQuote "he said \"oh no\"" `shouldBe` "\"he said \\\"oh no\\\"\""
+      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
