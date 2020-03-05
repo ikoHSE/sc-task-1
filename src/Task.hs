@@ -82,6 +82,8 @@ alternating = undefined
 --   or a node contains an element, with two branches coming off of it.
 data Tree a -- complete the implementation
   deriving (Show, Eq)
+-- ^ Don't worry about this 'deriving' business. It is needed for tests
+-- to compile. It will be explained later.
 
 -- Constructs a tree from the given elements.
 -- The first element is the root of the tree and the rest of the elements
@@ -169,7 +171,13 @@ treeSum = undefined
 --
 -- Assume that the input tree already satisfies the property.
 --
--- So given the number 5 as input and this tree:
+-- NOTE:
+--   You do NOT have to reorder existing elements in the tree.
+--   The function should just add the element to one of the leaves.
+--
+--   Strictly speaking, this is NOT a insertion into a binary tree.
+--
+-- So, given the number 5 as input and this tree:
 --    2
 --   / \
 --  1   3
@@ -180,7 +188,7 @@ treeSum = undefined
 --       \
 --        5
 --
--- And given this the number 2 as input and this tree:
+-- And given the number 2 as input and this tree:
 --          7
 --        /   \
 --      2       9
@@ -191,35 +199,68 @@ treeSum = undefined
 --        /   \
 --      2       9
 --     / \     /
---    1   2   8
---         \
---          5
+--    1   5   8
+--       /
+--      2
+--
+-- And given the number 7 as input and this tree:
+--          7
+--        /   \
+--      2       9
+--     / \     /
+--    1   5   8
+-- the function should produce this tree:
+--          7
+--        /   \
+--      2       9
+--     / \     /
+--    1   5   8
+--           /
+--          7
+--
+-- And given the number 1 as input and this tree:
+--          7
+--        /   \
+--      2       9
+--     / \     /
+--    1   5   8
+-- the function should produce this tree:
+--          7
+--        /   \
+--      2       9
+--     / \     /
+--    1   5   8
+--     \
+--      1
+--
+-- Also, see comments for function insertAll for more examples of how this
+-- function should behave.
 insert :: Integer -> Tree Integer -> Tree Integer
 insert = undefined
 
 -- Insert all integers from the list into the given tree using the insert
 -- function defined above.
 --
--- >>> insertAll [1, 2, 3]
+-- >>> insertAll [1, 2, 3] <empty tree>
 -- 1
 --  \
 --   2
 --    \
 --     3
 --
--- >>> insertAll [2, 3, 1]
+-- >>> insertAll [2, 3, 1] <empty tree>
 --    2
 --   / \
 --  1   3
 --
--- >>> insertAll [3, 2, 1]
+-- >>> insertAll [3, 2, 1] <empty tree>
 --     3
 --    /
 --   2
 --  /
 -- 1
 --
--- >>> insertAll [8, 8, 10, 8]
+-- >>> insertAll [8, 8, 10, 8] <empty tree>
 -- 8
 --  \
 --   8
