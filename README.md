@@ -64,3 +64,8 @@ To get rid of the errors you have to add `deriving Show` to the definition like 
 data Foo = Bar
   deriving Show
 ```
+## FAQ
+
+> Can I add extra functions in the `Task.hs` file?
+
+Yes, you can, but you can not remove existing functions.
