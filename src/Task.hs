@@ -23,6 +23,12 @@ import Numeric.Natural
 regroup :: (a, (b, c)) -> (b, a, c)
 regroup = undefined
 
+--   _     _     _         _          __  __
+--  | |   (_)___| |_   ___| |_ _   _ / _|/ _|
+--  | |   | / __| __| / __| __| | | | |_| |_
+--  | |___| \__ \ |_  \__ \ |_| |_| |  _|  _|
+--  |_____|_|___/\__| |___/\__|\__,_|_| |_|
+
 -- Implement a function that returns the first element of a list, if there is one.
 -- Hint: `Maybe a` is already defined as so:
 --
@@ -75,6 +81,13 @@ indexed = undefined
 -- [1, -2, 3, -4, 5, -6, ...
 alternating :: [Integer]
 alternating = undefined
+
+--   ____  _                          _
+--  | __ )(_)_ __   __ _ _ __ _   _  | |_ _ __ ___  ___
+--  |  _ \| | '_ \ / _` | '__| | | | | __| '__/ _ \/ _ \
+--  | |_) | | | | | (_| | |  | |_| | | |_| | |  __/  __/
+--  |____/|_|_| |_|\__,_|_|   \__, |  \__|_|  \___|\___|
+--                            |___/
 
 -- Define a binary tree structure.
 --
