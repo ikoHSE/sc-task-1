@@ -72,6 +72,8 @@ tests = do
       `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
     (insert 56 . insert 5 . insert 15 . insert 65 . insert 35 . insert 54 . insert 45 . insert 71 . constructTree) [50, 30, 60, 10, 55, 40, 70]
       `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
+    (insert 56 . insert 56 . insert 5 . insert 5 . insert 15 . insert 65 . insert 35 . insert 54 . insert 45 . insert 71 . constructTree) [50, 30, 60, 10, 55, 40, 70]
+      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
   it "insertAll" $ do
     constructTree [1 :: Int] `shouldNotBe` constructTree [1, 2]
     constructTree [1 :: Int] `shouldNotBe` constructTree []
@@ -85,4 +87,6 @@ tests = do
     (insertAll [35, 54, 45, 56, 5, 15, 65, 71] . constructTree) [50, 30, 60, 10, 55, 40, 70]
       `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
     (insertAll [56, 5, 15, 65, 35, 54, 45, 71] . constructTree) [50, 30, 60, 10, 55, 40, 70]
+      `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
+    (insertAll [56, 5, 15, 65, 35, 54, 45, 71, 5, 56, 35] . constructTree) [50, 30, 60, 10, 55, 40, 70]
       `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
