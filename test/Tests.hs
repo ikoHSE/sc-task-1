@@ -53,6 +53,11 @@ tests = do
     (treeSum . constructTree) [8, 7, 6, 5, 4, 1, 2, 3, 4, 5] `shouldBe` sum [8, 7, 6, 5, 4, 1, 2, 3, 4, 5]
     (treeSum . constructTree . take 100) [5 ..] `shouldBe` (sum . take 100) [5 ..]
     (treeSum . constructTree . take 100) [2 ..] `shouldBe` (sum . take 100) [2 ..]
+  it "treeSize" $ do
+    let test list = treeSize (constructTree list) `shouldBe` fromIntegral (length list)
+    test $ replicate 11 ()
+    test $ replicate 16 (8 :: Int)
+    test [5, 2, 5, 7, 7, 3, 2, 7, 7 :: Int]
   it "insert" $ do
     constructTree [1 :: Int] `shouldNotBe` constructTree [1, 2]
     constructTree [1 :: Int] `shouldNotBe` constructTree []

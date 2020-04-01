@@ -11,6 +11,7 @@ module Task
     treeSum,
     insert,
     insertAll,
+    treeSize,
   )
 where
 
@@ -21,7 +22,7 @@ import Numeric.Natural
 -- >>> regroup (8, ("Hello", True))
 -- ("Hello", 8, True)
 regroup :: (a, (b, c)) -> (b, a, c)
-regroup = undefined
+regroup = error "TODO: regroup"
 
 --   _     _     _         _          __  __
 --  | |   (_)___| |_   ___| |_ _   _ / _|/ _|
@@ -42,7 +43,7 @@ regroup = undefined
 -- >>> safeHead []
 -- Nothing
 safeHead :: [a] -> Maybe a
-safeHead = undefined
+safeHead = error "TODO: safeHead"
 
 -- Same as `safeHead`, but returns the last element.
 --
@@ -52,7 +53,7 @@ safeHead = undefined
 -- >>> safeLast []
 -- Nothing
 safeLast :: [a] -> Maybe a
-safeLast = undefined
+safeLast = error "TODO: safeLast"
 
 -- Returns the same list without the last element.
 --
@@ -62,7 +63,7 @@ safeLast = undefined
 -- >>> withoutLast []
 -- []
 withoutLast :: [a] -> [a]
-withoutLast = undefined
+withoutLast = error "TODO: withoutLast"
 
 -- Returns the element at a given index if there is one.
 -- Otherwise, return Nothing.
@@ -73,14 +74,14 @@ withoutLast = undefined
 -- >>> indexed 8 [6, 5, 4]
 -- Nothing
 indexed :: Natural -> [a] -> Maybe a
-indexed = undefined
+indexed = error "TODO: indexed"
 
 -- Is an infinite list, alternating the sign of every other element.
 --
 -- >>> alternating
 -- [1, -2, 3, -4, 5, -6, ...
 alternating :: [Integer]
-alternating = undefined
+alternating = error "TODO: alternating"
 
 --   ____  _                          _
 --  | __ )(_)_ __   __ _ _ __ _   _  | |_ _ __ ___  ___
@@ -89,18 +90,38 @@ alternating = undefined
 --  |____/|_|_| |_|\__,_|_|   \__, |  \__|_|  \___|\___|
 --                            |___/
 
+-- In this section you will implement what essentially is the Set from the
+-- standard library. If you literally open the source code of the standard
+-- library, it should look extremely similar to what you are doing here.
+
 -- Define a binary tree structure.
 --
--- Hint: a tree is either the end of the tree (a node with no elements)
---   or a node contains an element, with two branches coming off of it.
+-- This is a wiki page, but you probably shouldn't open it:
+--   https://en.wikipedia.org/wiki/Binary_tree
+--
+-- Hint: a tree is either:
+--   1. the end of the tree (an empty node with no elements)
+--        (it should literally contain nothing)
+--   2. a node which contains an element and two branches (left and right).
+--        (in this context a 'branch' and a 'tree' is the same thing)
+--
+--   In case you didn't get it, a tree should have two constructors.
 data Tree a -- complete the implementation
   deriving (Show, Eq)
 -- ^ Don't worry about this 'deriving' business. It is needed for tests
 -- to compile. It will be explained later.
 
+-- This next function is contrived but we need this since you can define
+--   constructors however you want.
+-- If you have trouble with this one, don't hesitate to ask for help.
+--
 -- Constructs a tree from the given elements.
 -- The first element is the root of the tree and the rest of the elements
 -- are the alternating left and right children.
+--
+-- You are expected to partition pluck the first element from the list and
+--   split the rest into two lists, which you recursively pass to the same
+--   function to get the left and right branches of the tree.
 --
 -- >>> constructTree [1, 2, 3]
 --    1
@@ -123,7 +144,7 @@ data Tree a -- complete the implementation
 --    l   l r   r
 --   .............
 constructTree :: [a] -> Tree a
-constructTree = undefined
+constructTree = error "TODO: constructTree"
 
 -- Returns the leftmost element of the given tree.
 --
@@ -139,7 +160,7 @@ constructTree = undefined
 --     / \   /
 --    4   6 5
 leftmost :: Tree a -> Maybe a
-leftmost = undefined
+leftmost = error "TODO: leftmost"
 
 -- Returns the rightmost element of the given tree.
 --
@@ -155,7 +176,7 @@ leftmost = undefined
 --     / \   /
 --    4   6 5
 rightmost :: Tree a -> Maybe a
-rightmost = undefined
+rightmost = error "TODO: rightmost"
 
 -- Returns the sum of all elements in the tree
 --
@@ -171,7 +192,23 @@ rightmost = undefined
 --     / \   /
 --    4   6 5
 treeSum :: Tree Integer -> Integer
-treeSum = undefined
+treeSum = error "TODO: treeSum"
+
+-- Returns the number of elements in the tree.
+--
+-- For this tree the result should be 3:
+--    1
+--   / \
+--  2   3
+--
+-- For this tree the result should be 6:
+--         1
+--        / \
+--      2     3
+--     / \   /
+--    4   6 5
+treeSize :: Tree a -> Integer
+treeSize = error "TODO: treeSize"
 
 -- Insert the given integer into the tree, maintaining this property:
 --   For every node in the tree all elements in the left subtree should be
@@ -184,11 +221,8 @@ treeSum = undefined
 --
 -- Assume that the input tree already satisfies the property.
 --
--- NOTE:
---   You do NOT have to reorder existing elements in the tree.
---   The function should just add the element to one of the leaves.
---
---   Strictly speaking, this is NOT a insertion into a binary tree.
+-- If the elements is already in the tree, replace the old element with the
+--   new element. Thus, this function should not produce duplicates in the tree.
 --
 -- So, given the number 5 as input and this tree:
 --    2
@@ -213,17 +247,15 @@ treeSum = undefined
 --      2       9
 --     / \     /
 --    1   5   8
---       /
---      2
 --
 -- And given the number 7 as input and this tree:
---          7
+--          6
 --        /   \
 --      2       9
 --     / \     /
 --    1   5   8
 -- the function should produce this tree:
---          7
+--          6
 --        /   \
 --      2       9
 --     / \     /
@@ -231,7 +263,7 @@ treeSum = undefined
 --           /
 --          7
 --
--- And given the number 1 as input and this tree:
+-- And given the number 3 as input and this tree:
 --          7
 --        /   \
 --      2       9
@@ -243,13 +275,13 @@ treeSum = undefined
 --      2       9
 --     / \     /
 --    1   5   8
---     \
---      1
+--       /
+--      3
 --
 -- Also, see comments for function insertAll for more examples of how this
 -- function should behave.
 insert :: Integer -> Tree Integer -> Tree Integer
-insert = undefined
+insert = error "TODO: insert"
 
 -- Insert all integers from the list into the given tree using the insert
 -- function defined above.
@@ -276,10 +308,6 @@ insert = undefined
 -- >>> insertAll [8, 8, 10, 8] <empty tree>
 -- 8
 --  \
---   8
---    \
---     8
---      \
---       10
+--   10
 insertAll :: [Integer] -> Tree Integer -> Tree Integer
-insertAll = undefined
+insertAll = error "TODO: insertAll"
