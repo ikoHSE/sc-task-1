@@ -77,7 +77,7 @@ tests = do
   it "insertAll" $ do
     constructTree [1 :: Int] `shouldNotBe` constructTree [1, 2]
     constructTree [1 :: Int] `shouldNotBe` constructTree []
-    (insertAll [3, 1, 2] . constructTree) [] `shouldBe` constructTree [2, 1, 3]
+    (insertAll [2, 3, 1] . constructTree) [] `shouldBe` constructTree [2, 1, 3]
     (insertAll [71, 65, 56, 54, 45, 35, 15, 5] . constructTree) [50, 30, 60, 10, 55, 40, 70]
       `shouldBe` constructTree [50, 30, 60, 10, 55, 40, 70, 5, 54, 35, 65, 15, 56, 45, 71]
     (insertAll [71, 54, 45, 35, 15, 65, 56, 5] . constructTree) [50, 30, 60, 10, 55, 40, 70]
