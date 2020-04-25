@@ -217,7 +217,7 @@ treeSize = error "TODO: treeSize"
 --
 --    a      forall e in b. e < a
 --   / \
---  b   c    forall e in c. a >= e
+--  b   c    forall e in c. e > a
 --
 -- Assume that the input tree already satisfies the property.
 --
