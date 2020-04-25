@@ -12,11 +12,43 @@ After defining all functions you then need to commit **and push** your code to y
 
 ## Prerequisites
 
+### Haskell Stack
+
 First of all, you need to install [haskell stack](https://docs.haskellstack.org/en/stable/README/). To do that you can follow the [installation instructions on the website](https://docs.haskellstack.org/en/stable/README/#how-to-install).
 
 Stack will manage to install the compiler and all required libraries when you try to compile a Haskell stack project. (The first time it might take a while, but when you will try to run it again, it will use the already installed tools).
 
 Stack is also a sort of meta build system. It is "meta" because stack doesn't build anything -- it tells *cabal* how to build your project with the installed compiler and libraries. *Cabal* is to Haskell what the *CMake* is to C++.
+
+### Git
+
+If you are running macOS or Linux you should already have some version of git installed on your system. If you do not, or if you are running windows, you will need to install git. You can do so by following this [git installation tutorial](https://www.atlassian.com/git/tutorials/install-git).
+
+## Cloning your project
+
+After you follow the special URL, you should finally end up on your github project.
+
+You will then want to grab the cloning URL:
+
+![](img/3.png)
+
+And in you terminal, navigate to where you would like to store your project and clone the git repo:
+
+```bash
+git clone https://github.com/hse-cs-2020/sc-task-1-ilyakooo0.git
+```
+
+### Making sure it build
+
+After you have cloned your project you should make sure you have everything set up and working properly.
+
+Navigate to the project folder and run the following command:
+
+```bash
+stack test
+```
+
+This should download the compiler, download all necessary libraries and run the test in your project.
 
 ## IDE
 
@@ -64,6 +96,23 @@ To get rid of the errors you have to add `deriving Show` to the definition like 
 data Foo = Bar
   deriving Show
 ```
+
+## Submitting you solution
+
+You can submit the solution to your solution to GitHub using IntlliJ.
+
+To do this you can go to "VCS > Commit...":
+
+![](img/4.png)
+
+After that you will need to write a commit message.
+
+**NOTE: Don't forget to push your commit. You can commit and push at the same time.**
+
+![](img/5.png)
+
+![](img/6.png)
+
 ## FAQ
 
 > Can I add extra functions in the `Task.hs` file?
