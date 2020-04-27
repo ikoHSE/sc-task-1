@@ -38,7 +38,7 @@ And in you terminal, navigate to where you would like to store your project and 
 git clone https://github.com/hse-cs-2020/sc-task-1-ilyakooo0.git
 ```
 
-### Making sure it build
+### Making sure it builds
 
 After you have cloned your project you should make sure you have everything set up and working properly.
 
