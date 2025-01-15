@@ -50,31 +50,7 @@ stack test
 
 This should download the compiler, download all necessary libraries and run the test in your project.
 
-## IDE
-
-The easiest way to develop is to use the [IntelliJ plugin for Haskell](https://github.com/rikvdkleij/intellij-haskell).
-
-
-Unfortunately, the latest versions of the plugin are not available in the IntelliJ marketplace, so it is recommended that you download it from [the "Releases" tab on github](https://github.com/rikvdkleij/intellij-haskell/releases):
-
-![](img/1.png)
-
-You then need to install it from disk:
-
-![](img/2.png)
-
-To install and use it you can follow [the instructions given in the project readme](https://github.com/rikvdkleij/intellij-haskell#getting-started).
-
-
-**NOTE: You need to make sure the project builds before importing**
-
-**NOTE: You need to choose "Project from Existing Sources..." in IntelliJ**
-
-When you first open a project, IntelliJ will download and build all the required tools to give you feedback about your project. (This may take a while, but is only required once)
-
 ## Build and test
-
-Unfortunately, *IntelliJ plugin for Haskell* doesn't currently support building your project directly from the IDE, so you will have to build your project and run tests from the terminal.
 
 All subsequent commands are assumed to be run when the current directory is the root of your project.
 
@@ -96,22 +72,6 @@ To get rid of the errors you have to add `deriving Show` to the definition like 
 data Foo = Bar
   deriving Show
 ```
-
-## Submitting you solution
-
-You can submit the solution to your solution to GitHub using IntlliJ.
-
-To do this you can go to "VCS > Commit...":
-
-![](img/4.png)
-
-After that you will need to write a commit message.
-
-**NOTE: Don't forget to push your commit. You can commit and push at the same time.**
-
-![](img/5.png)
-
-![](img/6.png)
 
 ## FAQ
 
