@@ -4,7 +4,7 @@ module Tests
 where
 
 import Task
-import Test.Tasty.Hspec
+import Test.Hspec
 
 tests :: Spec
 tests = do
