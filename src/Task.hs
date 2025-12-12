@@ -107,7 +107,7 @@ alternating = error "TODO: alternating"
 --
 --   In case you didn't get it, a tree should have two constructors.
 data Tree a -- complete the implementation
-  deriving (Show, Eq)
+  deriving stock (Show, Eq)
 -- ^ Don't worry about this 'deriving' business. It is needed for tests
 -- to compile. It will be explained later.
 

@@ -4,7 +4,7 @@ cabal-version: 2.2
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 3a8f9a0f85eb8219783c3f247249d6000cc81ac3994ea1301271c8fd551f3224
+-- hash: 05b9d4334e8d142b8f602519e144f2ed27c4d6632ad4f1882a97f8f47707533e
 
 name:           task
 version:        0.1.0.0
@@ -23,8 +23,9 @@ library
       src
   default-extensions:
       EmptyDataDeriving
+      DerivingStrategies
   build-depends:
-      base >=4.7 && <5
+      base
   default-language: Haskell2010
 
 test-suite task-tests
@@ -39,8 +40,9 @@ test-suite task-tests
       test
   default-extensions:
       EmptyDataDeriving
+      DerivingStrategies
   build-depends:
-      base >=4.7 && <5
+      base
     , hspec
     , task
     , tasty

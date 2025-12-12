@@ -54,7 +54,9 @@ tests = do
     (treeSum . constructTree . take 100) [5 ..] `shouldBe` (sum . take 100) [5 ..]
     (treeSum . constructTree . take 100) [2 ..] `shouldBe` (sum . take 100) [2 ..]
   it "treeSize" $ do
-    let test list = treeSize (constructTree list) `shouldBe` fromIntegral (length list)
+    let
+      test :: [a] -> Expectation
+      test list = treeSize (constructTree list) `shouldBe` fromIntegral (length list)
     test $ replicate 11 ()
     test $ replicate 16 (8 :: Int)
     test [5, 2, 5, 7, 7, 3, 2, 7, 7 :: Int]
