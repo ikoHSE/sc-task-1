@@ -21,3 +21,6 @@ ghc-options:
     -Wno-missing-poly-kind-signatures
     -Wno-implicit-prelude
     -threaded
+
+extra-deps:
+  - gi-gdk-4.0.9
