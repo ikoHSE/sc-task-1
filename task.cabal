@@ -4,7 +4,7 @@ cabal-version: 2.2
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 05b9d4334e8d142b8f602519e144f2ed27c4d6632ad4f1882a97f8f47707533e
+-- hash: 74d74f8d0d0682edb9eb72d0045dd53b34811ed76e1566566a9f3fca5d5abce3
 
 name:           task
 version:        0.1.0.0
@@ -42,7 +42,9 @@ test-suite task-tests
       EmptyDataDeriving
       DerivingStrategies
   build-depends:
-      base
+      aeson
+    , base
+    , bytestring
     , hspec
     , task
     , tasty

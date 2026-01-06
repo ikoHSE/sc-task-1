@@ -20,6 +20,7 @@ ghc-options:
     -Wno-missing-role-annotations
     -Wno-missing-poly-kind-signatures
     -Wno-implicit-prelude
+    -Wno-prepositive-qualified-module
     -threaded
 
 extra-deps:
